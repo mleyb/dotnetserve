@@ -1,5 +1,5 @@
 # setup build environment
-FROM microsoft/aspnetcore-build:latest AS build-env
+FROM microsoft/dotnet:2.2-sdk AS build-env
 WORKDIR /app
 
 # copy everything and build the project
@@ -8,7 +8,7 @@ RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
 # build runtime image
-FROM microsoft/aspnetcore:2.0
+FROM microsoft/dotnet:2.2-runtime-alpine
 WORKDIR /app
 COPY --from=build-env /app/out ./
 ENV ASPNETCORE_URLS http://+:5000
