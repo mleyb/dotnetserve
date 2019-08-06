@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dotnetserve-deployment
+  name: dotnetserve
 spec:
   selector:
     matchLabels:
