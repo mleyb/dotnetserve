@@ -1,0 +1,11 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: dotnetserve
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: dotnetserve
+        image: docker.io/mleybourne/dotnetserve:latest
