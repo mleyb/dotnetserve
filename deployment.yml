@@ -1,11 +1,19 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dotnetserve
+  name: dotnetserve-deployment
 spec:
+  selector:
+    matchLabels:
+      app: dotnetserve
   replicas: 1
   template:
+    metadata:
+      labels:
+        app: dotnetserve
     spec:
       containers:
       - name: dotnetserve
         image: docker.io/mleybourne/dotnetserve:latest
+        ports:
+        - containerPort: 5000
